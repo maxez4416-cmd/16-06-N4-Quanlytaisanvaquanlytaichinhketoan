@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_bao_cao_tai_san_form" model="ir.ui.view">
+            <field name="name">qltc.bao.cao.tai.san.form</field>
+            <field name="model">qltc.bao.cao.tai.san</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Báo cáo tài sản">
+                            <group>
+                                <field name="tu_ngay"/>
+                                <field name="den_ngay"/>
+                            </group>
+                            <group>
+                                <field name="loai_tai_san_id"/>
+                                <field name="tinh_trang"/>
+                            </group>
+                        </group>
+                        <group>
+                            <button name="action_tao_bao_cao" string="Tạo báo cáo" 
+                                    type="object" class="oe_highlight"/>
+                        </group>
+                        <group col="4" string="Tổng hợp" attrs="{'invisible': [('chi_tiet_ids', '=', [])]}">
+                            <field name="tong_nguyen_gia"/>
+                            <field name="tong_khau_hao"/>
+                            <field name="tong_con_lai"/>
+                        </group>
+                        <notebook attrs="{'invisible': [('chi_tiet_ids', '=', [])]}">
+                            <page string="Chi tiết">
+                                <field name="chi_tiet_ids" nolabel="1">
+                                    <tree>
+                                        <field name="ma_tai_san"/>
+                                        <field name="ten_tai_san"/>
+                                        <field name="loai_tai_san"/>
+                                        <field name="nguyen_gia"/>
+                                        <field name="tong_khau_hao"/>
+                                        <field name="gia_tri_con_lai"/>
+                                        <field name="tinh_trang"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_bao_cao_tai_san" model="ir.actions.act_window">
+            <field name="name">Báo cáo tài sản</field>
+            <field name="res_model">qltc.bao.cao.tai.san</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

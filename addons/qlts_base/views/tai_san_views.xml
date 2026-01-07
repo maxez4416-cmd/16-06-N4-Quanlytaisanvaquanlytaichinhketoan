@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_tai_san_form" model="ir.ui.view">
+            <field name="name">qlts.tai.san.form</field>
+            <field name="model">qlts.tai.san</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="tinh_trang" widget="statusbar" 
+                               statusbar_visible="moi,dang_su_dung,bao_tri,thanh_ly"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ten_tai_san" placeholder="Tên tài sản"/>
+                            </h1>
+                        </div>
+                        <group col="4" string="Thông tin tài sản">
+                            <field name="ma_tai_san"/>
+                            <field name="loai_tai_san_id"/>
+                            <field name="ngay_mua"/>
+                            <field name="vi_tri"/>
+                        </group>
+                        <group col="4" string="Thông tin giá trị">
+                            <field name="nguyen_gia"/>
+                            <field name="tong_khau_hao"/>
+                            <field name="gia_tri_con_lai"/>
+                        </group>
+                        <group string="Ghi chú">
+                            <field name="ghi_chu" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tai_san_tree" model="ir.ui.view">
+            <field name="name">qlts.tai.san.tree</field>
+            <field name="model">qlts.tai.san</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_tai_san"/>
+                    <field name="ten_tai_san"/>
+                    <field name="loai_tai_san_id"/>
+                    <field name="nguyen_gia"/>
+                    <field name="gia_tri_con_lai"/>
+                    <field name="tinh_trang"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tai_san_search" model="ir.ui.view">
+            <field name="name">qlts.tai.san.search</field>
+            <field name="model">qlts.tai.san</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ma_tai_san"/>
+                    <field name="ten_tai_san"/>
+                    <field name="loai_tai_san_id"/>
+                    <filter name="dang_su_dung" string="Đang sử dụng" 
+                            domain="[('tinh_trang','=','dang_su_dung')]"/>
+                    <filter name="moi" string="Mới" 
+                            domain="[('tinh_trang','=','moi')]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_loai" string="Loại tài sản" 
+                                context="{'group_by':'loai_tai_san_id'}"/>
+                        <filter name="group_tinh_trang" string="Tình trạng" 
+                                context="{'group_by':'tinh_trang'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_tai_san" model="ir.actions.act_window">
+            <field name="name">Tài sản</field>
+            <field name="res_model">qlts.tai.san</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_tai_san_search"/>
+        </record>
+    </data>
+</odoo>

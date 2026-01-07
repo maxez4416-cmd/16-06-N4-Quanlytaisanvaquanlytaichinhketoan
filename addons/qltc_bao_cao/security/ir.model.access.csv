@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qltc_bao_cao_tai_san,access.qltc.bao.cao.tai.san,model_qltc_bao_cao_tai_san,base.group_user,1,1,1,1
+access_qltc_bao_cao_tai_san_chi_tiet,access.qltc.bao.cao.tai.san.chi.tiet,model_qltc_bao_cao_tai_san_chi_tiet,base.group_user,1,1,1,1
+access_qltc_bao_cao_tai_chinh,access.qltc.bao.cao.tai.chinh,model_qltc_bao_cao_tai_chinh,base.group_user,1,1,1,1
+access_qltc_bao_cao_tai_chinh_chi_tiet,access.qltc.bao.cao.tai.chinh.chi.tiet,model_qltc_bao_cao_tai_chinh_chi_tiet,base.group_user,1,1,1,1

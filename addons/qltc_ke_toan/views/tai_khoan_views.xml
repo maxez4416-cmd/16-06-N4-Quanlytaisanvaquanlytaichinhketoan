@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_tai_khoan_form" model="ir.ui.view">
+            <field name="name">qltc.tai.khoan.form</field>
+            <field name="model">qltc.tai.khoan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ten_tai_khoan" placeholder="Tên tài khoản"/>
+                            </h1>
+                        </div>
+                        <group col="4" string="Thông tin tài khoản">
+                            <field name="ma_tai_khoan"/>
+                            <field name="loai_tai_khoan"/>
+                            <field name="tai_khoan_cap_tren_id"/>
+                        </group>
+                        <group col="4" string="Số dư">
+                            <field name="so_du_dau_ky"/>
+                            <field name="so_du_cuoi_ky"/>
+                        </group>
+                        <group string="Mô tả">
+                            <field name="mo_ta" nolabel="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Tài khoản cấp dưới">
+                                <field name="tai_khoan_cap_duoi_ids">
+                                    <tree>
+                                        <field name="ma_tai_khoan"/>
+                                        <field name="ten_tai_khoan"/>
+                                        <field name="loai_tai_khoan"/>
+                                        <field name="so_du_cuoi_ky"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Bút toán Nợ">
+                                <field name="but_toan_no_ids">
+                                    <tree>
+                                        <field name="ma_but_toan"/>
+                                        <field name="ngay_ghi_nhan"/>
+                                        <field name="tai_khoan_co_id"/>
+                                        <field name="so_tien"/>
+                                        <field name="trang_thai"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Bút toán Có">
+                                <field name="but_toan_co_ids">
+                                    <tree>
+                                        <field name="ma_but_toan"/>
+                                        <field name="ngay_ghi_nhan"/>
+                                        <field name="tai_khoan_no_id"/>
+                                        <field name="so_tien"/>
+                                        <field name="trang_thai"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tai_khoan_tree" model="ir.ui.view">
+            <field name="name">qltc.tai.khoan.tree</field>
+            <field name="model">qltc.tai.khoan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_tai_khoan"/>
+                    <field name="ten_tai_khoan"/>
+                    <field name="loai_tai_khoan"/>
+                    <field name="so_du_dau_ky"/>
+                    <field name="so_du_cuoi_ky"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tai_khoan_search" model="ir.ui.view">
+            <field name="name">qltc.tai.khoan.search</field>
+            <field name="model">qltc.tai.khoan</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ma_tai_khoan"/>
+                    <field name="ten_tai_khoan"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_loai" string="Loại tài khoản" 
+                                context="{'group_by':'loai_tai_khoan'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_tai_khoan" model="ir.actions.act_window">
+            <field name="name">Tài khoản kế toán</field>
+            <field name="res_model">qltc.tai.khoan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_tai_khoan_search"/>
+        </record>
+    </data>
+</odoo>

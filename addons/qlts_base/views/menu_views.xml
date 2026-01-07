@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_qlts_root" name="Quản lý Tài sản" sequence="10"/>
+        
+        <menuitem id="menu_qlts_tai_san" name="Tài sản" 
+                  parent="menu_qlts_root" sequence="10"/>
+        
+        <menuitem id="menu_tai_san" name="Danh sách tài sản" 
+                  parent="menu_qlts_tai_san" 
+                  action="action_tai_san" sequence="10"/>
+        
+        <menuitem id="menu_loai_tai_san" name="Loại tài sản" 
+                  parent="menu_qlts_tai_san" 
+                  action="action_loai_tai_san" sequence="20"/>
+    </data>
+</odoo>

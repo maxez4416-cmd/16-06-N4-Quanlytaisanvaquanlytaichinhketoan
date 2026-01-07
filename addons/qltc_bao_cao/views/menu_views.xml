@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_qltc_bao_cao" name="Báo cáo" 
+                  parent="qltc_ke_toan.menu_qltc_root" sequence="30"/>
+        
+        <menuitem id="menu_bao_cao_tai_san" name="Báo cáo tài sản" 
+                  parent="menu_qltc_bao_cao" 
+                  action="action_bao_cao_tai_san" sequence="10"/>
+        
+        <menuitem id="menu_bao_cao_tai_chinh" name="Báo cáo tài chính" 
+                  parent="menu_qltc_bao_cao" 
+                  action="action_bao_cao_tai_chinh" sequence="20"/>
+    </data>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qltc_tai_khoan,access.qltc.tai.khoan,model_qltc_tai_khoan,base.group_user,1,1,1,1
+access_qltc_but_toan,access.qltc.but.toan,model_qltc_but_toan,base.group_user,1,1,1,1

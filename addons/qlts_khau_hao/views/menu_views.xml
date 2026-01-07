@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_qlts_khau_hao" name="Khấu hao" 
+                  parent="qlts_base.menu_qlts_root" sequence="20"/>
+        
+        <menuitem id="menu_khau_hao" name="Danh sách khấu hao" 
+                  parent="menu_qlts_khau_hao" 
+                  action="action_khau_hao" sequence="10"/>
+    </data>
+</odoo>

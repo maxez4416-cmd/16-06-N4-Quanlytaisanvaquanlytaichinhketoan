@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_qltc_root" name="Quản lý Tài chính" sequence="20"/>
+        
+        <menuitem id="menu_qltc_ke_toan" name="Kế toán" 
+                  parent="menu_qltc_root" sequence="10"/>
+        
+        <menuitem id="menu_tai_khoan" name="Tài khoản kế toán" 
+                  parent="menu_qltc_ke_toan" 
+                  action="action_tai_khoan" sequence="10"/>
+        
+        <menuitem id="menu_but_toan" name="Bút toán" 
+                  parent="menu_qltc_ke_toan" 
+                  action="action_but_toan" sequence="20"/>
+    </data>
+</odoo>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_khau_hao_form" model="ir.ui.view">
+            <field name="name">qlts.khau.hao.form</field>
+            <field name="model">qlts.khau.hao</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_tao_but_toan" string="Tạo bút toán" 
+                                type="object" class="oe_highlight" 
+                                attrs="{'invisible': [('but_toan_id', '!=', False)]}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="tai_san_id"/>
+                            </h1>
+                        </div>
+                        <group col="4" string="Thông tin khấu hao">
+                            <field name="thang"/>
+                            <field name="nam"/>
+                            <field name="gia_tri_khau_hao"/>
+                            <field name="gia_tri_con_lai"/>
+                            <field name="but_toan_id" attrs="{'invisible': [('but_toan_id', '=', False)]}"/>
+                        </group>
+                        <group string="Ghi chú">
+                            <field name="ghi_chu" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_khau_hao_tree" model="ir.ui.view">
+            <field name="name">qlts.khau.hao.tree</field>
+            <field name="model">qlts.khau.hao</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="tai_san_id"/>
+                    <field name="thang"/>
+                    <field name="nam"/>
+                    <field name="gia_tri_khau_hao"/>
+                    <field name="gia_tri_con_lai"/>
+                    <field name="but_toan_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_khau_hao_search" model="ir.ui.view">
+            <field name="name">qlts.khau.hao.search</field>
+            <field name="model">qlts.khau.hao</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="tai_san_id"/>
+                    <field name="thang"/>
+                    <field name="nam"/>
+                    <filter name="co_but_toan" string="Có bút toán" 
+                            domain="[('but_toan_id', '!=', False)]"/>
+                    <filter name="chua_co_but_toan" string="Chưa có bút toán" 
+                            domain="[('but_toan_id', '=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_tai_san" string="Tài sản" 
+                                context="{'group_by':'tai_san_id'}"/>
+                        <filter name="group_nam" string="Năm" 
+                                context="{'group_by':'nam'}"/>
+                        <filter name="group_thang" string="Tháng" 
+                                context="{'group_by':'thang'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_khau_hao" model="ir.actions.act_window">
+            <field name="name">Khấu hao tài sản</field>
+            <field name="res_model">qlts.khau.hao</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_khau_hao_search"/>
+        </record>
+    </data>
+</odoo>

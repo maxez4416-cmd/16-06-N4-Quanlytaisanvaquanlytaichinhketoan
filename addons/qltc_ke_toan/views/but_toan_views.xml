@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sequence_but_toan" model="ir.sequence">
+            <field name="name">Bút toán Sequence</field>
+            <field name="code">qltc.but.toan</field>
+            <field name="prefix">BT</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="view_but_toan_form" model="ir.ui.view">
+            <field name="name">qltc.but.toan.form</field>
+            <field name="model">qltc.but.toan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_xac_nhan" string="Xác nhận" 
+                                type="object" class="oe_highlight" 
+                                attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
+                        <button name="action_huy" string="Hủy" 
+                                type="object" 
+                                attrs="{'invisible': [('trang_thai', '=', 'huy')]}"/>
+                        <button name="action_chuyen_ve_nhap" string="Chuyển về nháp" 
+                                type="object" 
+                                attrs="{'invisible': [('trang_thai', '=', 'nhap')]}"/>
+                        <field name="trang_thai" widget="statusbar" 
+                               statusbar_visible="nhap,xac_nhan"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ma_but_toan" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group col="4" string="Thông tin bút toán">
+                            <field name="ngay_ghi_nhan"/>
+                            <field name="loai_but_toan"/>
+                            <field name="tai_khoan_no_id"/>
+                            <field name="tai_khoan_co_id"/>
+                            <field name="so_tien"/>
+                        </group>
+                        <group string="Diễn giải">
+                            <field name="dien_giai" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_but_toan_tree" model="ir.ui.view">
+            <field name="name">qltc.but.toan.tree</field>
+            <field name="model">qltc.but.toan</field>
+            <field name="arch" type="xml">
+                <tree decoration-muted="trang_thai=='huy'" 
+                      decoration-success="trang_thai=='xac_nhan'">
+                    <field name="ma_but_toan"/>
+                    <field name="ngay_ghi_nhan"/>
+                    <field name="tai_khoan_no_id"/>
+                    <field name="tai_khoan_co_id"/>
+                    <field name="so_tien"/>
+                    <field name="loai_but_toan"/>
+                    <field name="trang_thai"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_but_toan_search" model="ir.ui.view">
+            <field name="name">qltc.but.toan.search</field>
+            <field name="model">qltc.but.toan</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ma_but_toan"/>
+                    <field name="tai_khoan_no_id"/>
+                    <field name="tai_khoan_co_id"/>
+                    <filter name="nhap" string="Nháp" 
+                            domain="[('trang_thai','=','nhap')]"/>
+                    <filter name="xac_nhan" string="Đã xác nhận" 
+                            domain="[('trang_thai','=','xac_nhan')]"/>
+                    <filter name="huy" string="Đã hủy" 
+                            domain="[('trang_thai','=','huy')]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_loai" string="Loại bút toán" 
+                                context="{'group_by':'loai_but_toan'}"/>
+                        <filter name="group_trang_thai" string="Trạng thái" 
+                                context="{'group_by':'trang_thai'}"/>
+                        <filter name="group_ngay" string="Ngày ghi nhận" 
+                                context="{'group_by':'ngay_ghi_nhan'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_but_toan" model="ir.actions.act_window">
+            <field name="name">Bút toán kế toán</field>
+            <field name="res_model">qltc.but.toan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_but_toan_search"/>
+        </record>
+    </data>
+</odoo>

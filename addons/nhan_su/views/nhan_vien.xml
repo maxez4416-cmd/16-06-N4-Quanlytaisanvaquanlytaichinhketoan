@@ -11,9 +11,23 @@
                         <group col="4" string="Thông tin chung">
                             <field name="ma_dinh_danh"/>
                             <field name="ngay_sinh"/>
+                            <field name="ho_ten_dem"/>
+                            <field name="ho_va_ten"/>
                             <field name="que_quan"/>
                             <field name="email"/>
+                            <field name="so_bhxh"/>
+                            <field name="ngay_tham_ra"/>
+                            <field name="chuyen_mon"/>
+                            <field name="tuoi"/>
                         </group>
+                        <notebook>
+                            <page string="Danh sách lịch sử công tác">
+                                <field name="lich_su_cong_tac_ids"/>
+                            </page>
+                            <page string="Danh sách chứng chỉ bằng cấp">
+                                <field name="danh_sach_chung_chi_bang_cap_ids"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -25,9 +39,16 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="ma_dinh_danh"/>
+                    <field name="ho_ten_dem"/>
+                    <field name="ho_va_ten"/>
                     <field name="ngay_sinh"/>
                     <field name="que_quan"/>
                     <field name="email"/>
+                    <field name="so_bhxh"/>
+                            <field name="ngay_tham_ra"/>
+                            <field name="chuyen_mon"/>
+                            <field name="tuoi"/>
+
                 </tree>
             </field>
         </record>
@@ -37,9 +58,17 @@
             <field name="arch" type="xml">
                 <search>
                     <field name="ma_dinh_danh"/>
+                    <field name="ho_ten_dem"/>
+                    <field name="ho_va_ten"/>
                     <field name="ngay_sinh"/>
                     <field name="que_quan"/>
                     <field name="email"/>
+                    <field name="so_bhxh"/>
+                    <field name="ngay_tham_ra"/>
+                    <field name="chuyen_mon"/>
+                    <field name="tuoi"/>
+
+
                 </search>
             </field>
         </record>

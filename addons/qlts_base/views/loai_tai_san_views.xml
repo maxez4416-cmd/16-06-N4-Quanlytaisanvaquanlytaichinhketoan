@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_loai_tai_san_form" model="ir.ui.view">
+            <field name="name">qlts.loai.tai.san.form</field>
+            <field name="model">qlts.loai.tai.san</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ten_loai" placeholder="Tên loại tài sản"/>
+                            </h1>
+                        </div>
+                        <group col="4" string="Thông tin loại tài sản">
+                            <field name="ma_loai"/>
+                            <field name="thoi_gian_su_dung"/>
+                            <field name="ty_le_khau_hao"/>
+                            <field name="so_luong_tai_san"/>
+                        </group>
+                        <group string="Mô tả">
+                            <field name="mo_ta" nolabel="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Danh sách tài sản">
+                                <field name="tai_san_ids">
+                                    <tree>
+                                        <field name="ma_tai_san"/>
+                                        <field name="ten_tai_san"/>
+                                        <field name="nguyen_gia"/>
+                                        <field name="gia_tri_con_lai"/>
+                                        <field name="tinh_trang"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_loai_tai_san_tree" model="ir.ui.view">
+            <field name="name">qlts.loai.tai.san.tree</field>
+            <field name="model">qlts.loai.tai.san</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_loai"/>
+                    <field name="ten_loai"/>
+                    <field name="thoi_gian_su_dung"/>
+                    <field name="ty_le_khau_hao"/>
+                    <field name="so_luong_tai_san"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_loai_tai_san_search" model="ir.ui.view">
+            <field name="name">qlts.loai.tai.san.search</field>
+            <field name="model">qlts.loai.tai.san</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ma_loai"/>
+                    <field name="ten_loai"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_thoi_gian" string="Thời gian sử dụng" 
+                                context="{'group_by':'thoi_gian_su_dung'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_loai_tai_san" model="ir.actions.act_window">
+            <field name="name">Loại tài sản</field>
+            <field name="res_model">qlts.loai.tai.san</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_loai_tai_san_search"/>
+        </record>
+    </data>
+</odoo>
